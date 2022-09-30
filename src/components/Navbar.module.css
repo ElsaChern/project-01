@@ -1,0 +1,11 @@
+.nav {
+    grid-area: n;
+    background-color: rgb(197, 206, 255);
+    border: 3px solid black;
+  }
+
+  .item {
+    margin-left: 20px;
+    margin-top: 20px;
+    color: azure;
+  }
