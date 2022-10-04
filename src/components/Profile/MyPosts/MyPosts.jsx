@@ -4,12 +4,15 @@ import Post from "./Post/Post";
 
 const MyPosts = () => {
   return (
-    <div>
+    <div className={styleProf.posts}>
       My posts
-      <div>New post</div>
-      <Post message= "The weather is sunny today!" />
-      <Post message= 'How are you?' />
-      <Post message= 'This is my first post' />
+      <div>
+        <textarea rows={3} cols={50}></textarea>
+      </div>
+      <button>New post</button>
+      <Post message= "The weather is sunny today!" likes="23"/>
+      <Post message= 'How are you?' likes="12"/>
+      <Post message= 'This is my first post' likes="7" />
     </div>
   );
 };

@@ -11,3 +11,9 @@
     /* grid-gap: 10px; */
 
 }
+
+.app-wrapper-content {
+  grid-area: c;
+  background-color: rgba(205, 250, 192, 0.632);
+  border: 3px solid black;
+}
