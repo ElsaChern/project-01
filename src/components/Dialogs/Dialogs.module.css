@@ -1,10 +1,11 @@
 .dialogs {
   display: grid;
   grid-template-columns: 3fr 10fr;
+  
 }
 
-.dialogsItems {
-    
+dialogsItems {
+  text-decoration: none;
 }
 
 .dialog {
@@ -18,8 +19,14 @@
   }
 
 .messages {
-}
-
-.message {
   padding: 10px;
+    background-color:  rgba(177, 188, 250, 0.5);
+  }
+
+
+
+.avatar img {
+    margin: 10px;
+    width: 40px;
+    border-radius: 30px;
 }

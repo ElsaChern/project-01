@@ -1,9 +1,10 @@
 import React from "react";
-import styleDial from "./../Dialogs.module.css";
+import styleDial from "./Message.module.css";
 
 
 const Message = (props) => {
    return <div className={styleDial.message}>{props.message}</div>
+   
 }
 
 

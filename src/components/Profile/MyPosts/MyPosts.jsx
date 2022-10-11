@@ -2,23 +2,28 @@ import React from "react";
 import styleProf from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-  let postsData = [
-    {id:"1", message:"The weather is sunny today!", likes:"23"},
-    {id:"2", message:"How are you?", likes:"12"},
-    {id:"3", message:"OK", likes:"7"}
-  ]
+  let newPostElement = React.createRef();
 
-  let postsElements = postsData.map ( post => <Post message={post.message} likes={post.likes} /> )
+  let addPost = () => {
+    props.addPost()
+  }
+
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateNewPostText(text);
+  }
+
+  let postsElements = props.postsData.map ( post => <Post message={post.message} likes={post.likes} /> )
 
   return (
     <div className={styleProf.posts}>
       My posts
       <div>
-        <textarea rows={3} cols={50}></textarea>
+        <textarea rows={3} cols={50} ref={newPostElement} onChange={onPostChange} value={props.newPostText}></textarea>
       </div>
-      <button>New post</button>
+      <button onClick={addPost}>Add post</button>
       { postsElements } 
     </div>
   );
