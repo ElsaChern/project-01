@@ -9,12 +9,12 @@ const Dialogs = (props) => {
   let newMessageElement = React.createRef();
 
   let sendMessage = () => {
-    props.sendMessage()
+    props.dispatch({ type: "SEND-MESSAGE" })
   }
 
   let onMessageChange = () => {
     let text = newMessageElement.current.value;
-    props.createMessageText(text);
+    props.dispatch({ type: "CREATE-MESSAGE-TEXT", newMessage: text });
   }
     
     let penFriendElement = props.state.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />)

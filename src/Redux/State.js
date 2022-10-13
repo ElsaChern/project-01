@@ -28,46 +28,42 @@ let store = {
       ],
     },
   },
+  _callSubscriber() {
+    console.log("G");
+  },
+
   getState() {
     return this._state;
   },
-  renderEntireTree() {
-    console.log("G");
-  },
-  addPost() {
-    let newPost = {
-      id: "5",
-      message: this._state.profilePage.newPostText,
-      likes: "0",
-    };
-    this._state.profilePage.postsData.push(newPost);
-    this._state .profilePage.newPostText = "";
-    this._renderEntireTree(this._state);
-  },
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this._renderEntireTree(this._state);
-  },
-  sendMessage() {
-    let newMessage = {
-      id: "5",
-      message: this._state.messagePage.newMessageText,
-    };
-    this._state.messagePage.messageData.push(newMessage);
-    this._state.messagePage.newMessageText = "";
-    this._renderEntireTree(this._state);
-  },
-  createMessageText(newMessage) {
-    this._state.messagePage.newMessageText = newMessage;
-    this._renderEntireTree(this._state);
-  },
   subscribe(observer) {
-    this._renderEntireTree = observer;
+    this._callSubscriber = observer;
+  },
+
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: "5",
+        message: this._state.profilePage.newPostText,
+        likes: "0",
+      };
+      this._state.profilePage.postsData.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === "SEND-MESSAGE") {
+      let newMessage = {
+        id: "5",
+        message: this._state.messagePage.newMessageText,
+      };
+      this._state.messagePage.messageData.push(newMessage);
+      this._state.messagePage.newMessageText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "CREATE-MESSAGE-TEXT") {
+      this._state.messagePage.newMessageText = action.newMessage;
+      this._callSubscriber(this._state);
+    }
   },
 };
-
-window.store = store;
-
 export default store;
-
- 
