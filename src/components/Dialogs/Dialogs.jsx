@@ -1,20 +1,20 @@
 import React from "react";
+import { createMessageTextActionCreator, sendMessageActionCreator } from "../../Redux/dialogs-reducer";
 import DialogItem from "./DialogItem/DialogItem";
 import styleDial from "./Dialogs.module.css";
 import Message from "./Message/Message";
-
 
 const Dialogs = (props) => {
 
   let newMessageElement = React.createRef();
 
   let sendMessage = () => {
-    props.dispatch({ type: "SEND-MESSAGE" })
+    props.dispatch(sendMessageActionCreator())
   }
 
   let onMessageChange = () => {
     let text = newMessageElement.current.value;
-    props.dispatch({ type: "CREATE-MESSAGE-TEXT", newMessage: text });
+    props.dispatch(createMessageTextActionCreator(text));
   }
     
     let penFriendElement = props.state.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />)
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
       <div className={styleDial.messages}>
         { messagesElements }
         <div>
-        <textarea rows={4} cols={80} ref={newMessageElement} onChange={onMessageChange} value={props.newMessageText}></textarea>
+        <textarea rows={4} cols={80} placeholder="Enter you message" ref={newMessageElement} onChange={onMessageChange} value={props.state.newMessageText}></textarea>
       </div>
       <button onClick={sendMessage}>Send </button>
       </div>
