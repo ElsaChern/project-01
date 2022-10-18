@@ -6,17 +6,16 @@ import Post from "./Post/Post";
 const MyPosts = (props) => {
 
   let newPostElement = React.createRef();
+  let postsElements = props.postsData.map ( post => <Post message={post.message} likes={post.likes} /> )
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator())
-  }
+    props.addPost()
+  } 
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.dispatch(updateNewPostActionCreator(text));
-  }
-
-  let postsElements = props.postsData.map ( post => <Post message={post.message} likes={post.likes} /> )
+    props.updateNewPostActionCreator(text);
+  }  
 
   return (
     <div className={styleProf.posts}>

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components//Header/Header";
 import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
@@ -17,10 +18,8 @@ const App = (props) => {
               <Navbar/>
               <div className='app-wrapper-content'>
                   <Routes>
-                      <Route path="/dialogs*" element={<Dialogs state={props.state.messagePage}
-                                                                dispatch={props.dispatch} />}/>
-                      <Route path="/profile" element={<Profile state={props.state.profilePage} 
-                                                                dispatch={props.dispatch} />}/>
+                      <Route path="/dialogs*" element={<DialogsContainer store={props.store} />}/>
+                      <Route path="/profile" element={<Profile store={props.store} />}/>
                       <Route path="/news" element={<News/>}/>
                       <Route path="/music" element={<Music/>}/>
                       <Route path="/settings" element={<Settings/>}/>

@@ -1,4 +1,22 @@
-const dialogsReducer = (state, action) => {
+let initialState = {
+    messageData: [
+        { id: "1", message: "Hi" },
+        { id: "2", message: "Hello" },
+        { id: "3", message: "How are you?" },
+        { id: "4", message: "OK" },
+      ],
+
+      newMessageText: "",
+
+      dialogsData: [
+        { id: "1", name: "Max" },
+        { id: "2", name: "Маша" },
+        { id: "3", name: "Misha" },
+        { id: "4", name: "Ira" },
+      ]
+}
+
+const dialogsReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case "SEND-MESSAGE":
@@ -17,7 +35,7 @@ const dialogsReducer = (state, action) => {
     }
 }
 
-export const sendMessageActionCreator = () => {
+export const sendMessageAction = () => {
     return {
       type: "SEND-MESSAGE"
     }  
