@@ -6,7 +6,7 @@ let initialState = {
         { id: "4", message: "OK" },
       ],
 
-      newMessageText: "",
+      newMessageText: "Hey",
 
       dialogsData: [
         { id: "1", name: "Max" },
@@ -17,19 +17,23 @@ let initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
-
+ 
     switch(action.type) {
         case "SEND-MESSAGE":
-            let newMessage = {
-                id: "5",
-                message: state.newMessageText,
-              };
-              state.newMessageText = "";
-              state.messageData.push(newMessage);
-              return state;
+          let newMessageText = state.newMessageText;
+
+          return {
+            ...state,
+            newMessageText: '',
+            messageData: [...state.messageData, {id: "5",message: newMessageText,}]
+          };
+ 
         case "CREATE-MESSAGE-TEXT":
-            state .newMessageText = action.newMessage;
-            return state;
+            return  {
+            ...state,
+            newMessageText: action.newMessage
+          };
+  
         default:
             return state;
     }

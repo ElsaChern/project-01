@@ -12,13 +12,13 @@ const Dialogs = (props) => {
     props.sendMessageAction()
   }
 
-  let onMessageChange = () => {
+  let updateMessageText = () => {
     let text = newMessageElement.current.value;
-    props.createMessageTextAction(text);
+    props.onMessageChange(text);
   }
     
-    let penFriendElement = state.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />)
-    let messagesElements = state.messageData.map( message => <Message message={message.message} />)
+    let penFriendElement = state.dialogsData.map( dialog => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />)
+    let messagesElements = state.messageData.map( message => <Message message={message.message} key={message.id} />)
 
     return (
     <div className={styleDial.dialogs}>
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
       <div className={styleDial.messages}>
         { messagesElements }
         <div>
-        <textarea rows={4} cols={80} placeholder="Enter you message" ref={newMessageElement} onChange={onMessageChange} value={props.newMessageText}></textarea>
+        <textarea rows={4} cols={80} placeholder="Enter you message" ref={newMessageElement} onChange={updateMessageText} value={props.newMessageText}></textarea>
       </div>
       <button onClick={sendMessage}>Send </button>
       </div>
