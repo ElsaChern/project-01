@@ -8,6 +8,9 @@ const Navbar = () => {
             <NavLink to='/profile'>Profile</NavLink>
         </div>
         <div className={stylesNav.item}>
+            <NavLink to='/Users'>Users</NavLink>
+        </div>
+        <div className={stylesNav.item}>
             <NavLink to='/dialogs'>Messages</NavLink>
         </div>
         <div className={stylesNav.item}>

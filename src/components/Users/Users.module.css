@@ -1,4 +1,16 @@
 
 .photo {
-    width: 50px;
+    width: 90px;
+    margin: 10px;
+}
+
+.selectedPage {
+    font-weight: bold;
+    font-size: 30px;
+    padding: 8px;
+}
+
+.pages {
+    margin-left:  600px;
+    margin-top: 20px;
 }
