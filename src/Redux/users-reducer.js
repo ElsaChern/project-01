@@ -4,8 +4,7 @@ let initialState = {
     totalUsersCount: 20,
     currentPage: 1
     }
-
-
+    
 const usersReducer = (state = initialState, action) => {
 
     switch(action.type) {
